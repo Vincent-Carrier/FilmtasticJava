@@ -15,6 +15,10 @@ jobs:
   #      - run:
   #         name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
   #         command: sudo chmod +x ./gradlew
+
+      - dependencies:
+          pre:
+            - source envsetup.sh && copyEnvVarsToGradleProperties
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies

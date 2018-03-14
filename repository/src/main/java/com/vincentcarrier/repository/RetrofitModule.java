@@ -11,8 +11,6 @@ import okhttp3.Request;
 import retrofit2.Retrofit;
 import retrofit2.converter.moshi.MoshiConverterFactory;
 
-import static com.vincentcarrier.repository.ApiKey.API_KEY;
-
 @Module public class RetrofitModule {
   @Provides @Singleton TheMovieDbApi theMovieDbApi(Retrofit retrofit) {
     return retrofit.create(TheMovieDbApi.class);
@@ -29,7 +27,8 @@ import static com.vincentcarrier.repository.ApiKey.API_KEY;
   @Provides @Singleton OkHttpClient client() {
     return new OkHttpClient.Builder().addInterceptor(chain -> {
       Request original = chain.request();
-      HttpUrl url = original.url().newBuilder().addQueryParameter("api_key", API_KEY).build();
+      HttpUrl url = original.url().newBuilder()
+          .addQueryParameter("api_key", BuildConfig.THEMOVIEDB_API_KEY).build();
       Request request = original.newBuilder().url(url).build();
       return chain.proceed(request);
     }).build();
