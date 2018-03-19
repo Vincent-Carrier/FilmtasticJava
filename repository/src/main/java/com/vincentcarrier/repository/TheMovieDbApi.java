@@ -8,7 +8,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 interface TheMovieDbApi {
-	@GET("movie/{sort_method}")
-	Observable<List<Movie>> getMovies(@Path("sort_method") String sortMethod,
-	                                  @Query("page") int page);
+    @GET("movie/{sort_method}")
+    Observable<List<Movie>> getMovies(@Path("sort_method") String sortMethod,
+                                      @Query("page") int page);
 }

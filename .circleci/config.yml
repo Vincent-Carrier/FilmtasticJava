@@ -16,9 +16,9 @@ jobs:
   #         name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
   #         command: sudo chmod +x ./gradlew
 
-      - dependencies:
-          pre:
-            - source envsetup.sh && copyEnvVarsToGradleProperties
+      - run:
+          name: Replace placeholder API key
+          command: sed -i "s/placeholdertmdbkey/$THEMOVIEDB_API_KEY/" gradle.properties
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
