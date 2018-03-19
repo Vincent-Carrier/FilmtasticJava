@@ -1,6 +1,11 @@
 package com.vincentcarrier.repository;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import com.squareup.moshi.JsonAdapter;
+import com.squareup.moshi.Moshi;
+import com.squareup.moshi.Types;
+
+import java.util.List;
 
 import javax.inject.Singleton;
 
@@ -20,9 +25,15 @@ import retrofit2.converter.moshi.MoshiConverterFactory;
     }
 
     @Provides @Singleton Retrofit retrofit(OkHttpClient client) {
+        Moshi moshi = new Moshi.Builder()
+                .add(MyAdapterFactory.create())
+                .build();
+
         return new Retrofit.Builder().baseUrl("http://api.themoviedb.org/3/")
-                .addConverterFactory(MoshiConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+                .addConverterFactory(MoshiConverterFactory.create(moshi))
+                .addCallAdapterFactory(
+                        RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io())
+                )
                 .client(client)
                 .build();
     }
