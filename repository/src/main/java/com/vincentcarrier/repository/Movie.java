@@ -7,7 +7,7 @@ import com.squareup.moshi.Moshi;
 
 import java.util.List;
 
-@AutoValue abstract class Movie {
+@AutoValue public abstract class Movie {
 	abstract int id();
 	abstract String title();
 	@Json(name = "poster_path") abstract String posterPath();

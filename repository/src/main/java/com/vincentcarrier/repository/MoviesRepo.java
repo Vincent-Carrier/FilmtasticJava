@@ -6,7 +6,7 @@ import javax.inject.Inject;
 
 import io.reactivex.Observable;
 
-class MoviesRepo {
+public class MoviesRepo {
     private TheMovieDbApi service;
 
     @Inject public MoviesRepo(TheMovieDbApi service) {
