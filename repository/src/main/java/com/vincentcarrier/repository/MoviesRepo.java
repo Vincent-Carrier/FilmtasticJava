@@ -13,8 +13,8 @@ public class MoviesRepo {
         this.service = service;
     }
 
-    public Observable<MovieResults> getMovies(MovieSortMethod sortMethod, int page) {
-        return service.getMovies(sortMethod.jsonName, page);
-//                .map({ (MovieResults) response -> response.results() });
+    public Observable<List<Movie>> getMovies(MovieSortMethod sortMethod, int page) {
+        return service.getMovies(sortMethod.pathString, page)
+                .map(MovieResults::results);
     }
 }

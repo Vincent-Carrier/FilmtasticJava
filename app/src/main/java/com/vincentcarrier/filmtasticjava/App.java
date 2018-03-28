@@ -1,9 +1,5 @@
 package com.vincentcarrier.filmtasticjava;
 
-import android.app.Application;
+public class App {
 
-public class App extends Application {
-  @Override public void onCreate() {
-    super.onCreate();
-  }
 }

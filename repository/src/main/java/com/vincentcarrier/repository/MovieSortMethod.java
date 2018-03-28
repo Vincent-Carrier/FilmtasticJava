@@ -3,9 +3,9 @@ package com.vincentcarrier.repository;
 public enum MovieSortMethod {
     TOP_RATED("top_rated"), POPULAR("popular");
 
-    public final String jsonName;
+    public final String pathString;
 
-    MovieSortMethod(String jsonName) {
-        this.jsonName = jsonName;
+    MovieSortMethod(String pathString) {
+        this.pathString = pathString;
     }
 }

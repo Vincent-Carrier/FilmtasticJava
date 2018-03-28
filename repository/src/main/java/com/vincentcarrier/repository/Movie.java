@@ -5,8 +5,6 @@ import com.squareup.moshi.Json;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 
-import java.util.List;
-
 @AutoValue public abstract class Movie {
 	abstract int id();
 	abstract String title();
@@ -24,14 +22,3 @@ import java.util.List;
     }
 }
 
-@AutoValue abstract class MovieResults {
-    abstract List<Movie> results();
-
-    static MovieResults create(List<Movie> results) {
-        return new AutoValue_MovieResults(results);
-    }
-
-    public static JsonAdapter<MovieResults> jsonAdapter(Moshi moshi) {
-        return new AutoValue_MovieResults.MoshiJsonAdapter(moshi);
-    }
-}
